@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f57c1f; /* naranja */
+    color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menú superior */
+.menu-superior {
+    background: linear-gradient(to bottom, #5a2c00, #9a4500);
+    padding: 5px 0;
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.3);
+}
+
+.menu-superior ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.menu-superior li {
+    margin: 0 8px;
+    padding: 5px 15px;
+    background-color: #f0a44b;
+    border: 1px solid #884800;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.menu-superior li:hover {
+    background-color: #ffc270;
+}
+
+/* Título */
+.titulo {
+    background-color: #f57c1f;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    border-bottom: 2px solid #a54b00;
+}
+
+/* Contenido principal */
+.contenido {
+    flex-grow: 1;
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.contenido h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.imagen-cajas img {
+    margin-top: 200px;
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+}
+
+/* Pie de página */
+.pie {
+    background-color: #5a2c00;
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
