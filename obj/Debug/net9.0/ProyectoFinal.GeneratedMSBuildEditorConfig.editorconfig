@@ -36,12 +36,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXFJlZ2lzdHJhcnNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/DefaultMantenimiento.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xEZWZhdWx0TWFudGVuaW1pZW50by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/FrmBodega.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xGcm1Cb2RlZ2EuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/FrmCaja.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xGcm1DYWphLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/FrmClientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xGcm1DbGllbnRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/FrmEmpresa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xGcm1FbXByZXNhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/FrmProductos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xGcm1Qcm9kdWN0b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Mantenimiento/FrmSuplidores.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xGcm1TdXBsaWRvcmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Panel/Dashboard.cshtml]
@@ -50,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Shared/_header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9oZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Jose/Desktop/Proyectos/Punto_Venta/ProyectoFinal/Views/Shared/_ValidationScriptsPartial.cshtml]

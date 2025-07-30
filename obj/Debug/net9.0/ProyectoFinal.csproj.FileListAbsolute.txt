@@ -23,7 +23,6 @@ C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\scope
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\scopedcss\projectbundle\ProyectoFinal.bundle.scp.css
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\xrllxg2aul-7ctb8y72r6.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\fbethnjv0d-b9sayid5wm.gz
-C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cmfstn6bif-61n19gt1b8.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\uz5nlogasf-xtxxf3hu2r.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\szzmnmvskv-bqjiyaj88i.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\12l0z4txv3-c2jlpeoesf.gz
@@ -229,4 +228,6 @@ C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\bin\Debug\net9.0\runti
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ProyectoFinal.csproj.AssemblyReference.cache
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\Proyecto.489DB05A.Up2Date
-C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cqdzzadyzl-puiquhuvze.gz
+C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ProyectoFinal.sourcelink.json
+C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cqdzzadyzl-owx4z3ndba.gz
+C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cmfstn6bif-w4apyz6sud.gz

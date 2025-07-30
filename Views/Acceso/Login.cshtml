@@ -18,7 +18,7 @@
         <img src="~/images/CajasAlmacen.png" alt="Cajas" class="cajas">
 
         <div class="login_box">
-            <img src="~/images/CerraduraRoja.png" alt="Candado" class="candado">
+            <img src="~/images/@(ViewBag.CredencialesValidas != null && (bool)ViewBag.CredencialesValidas ? "CerraduraVerde.png" : "CerraduraRoja.png")" alt="Candado" class="candado">
 
             <div class="formulario">
                 <div class="titulo">Control de Acceso</div>
@@ -39,12 +39,22 @@
                     </div>
                 </form>
 
-                @if (ViewBag.Mensaje != null)
-                {
-                    <div class="mensaje">
-                        Mensaje.: @ViewBag.Mensaje
-                    </div>
-                }
+               @if (ViewBag.Mensaje != null)
+{
+    <div class="mensaje @(ViewBag.CredencialesValidas != null && (bool)ViewBag.CredencialesValidas ? "mensaje-verde" : "mensaje-rojo")">
+        @ViewBag.Mensaje
+    </div>
+
+    @if (ViewBag.CredencialesValidas != null && (bool)ViewBag.CredencialesValidas)
+    {
+        <script>
+            setTimeout(function () {
+                window.location.href = '/Panel/Dashboard';
+            }, 2000); // Redirige después de 2 segundos
+        </script>
+    }
+}
+
             </div>
         </div>
     </div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="~/images/Favicon.png" />
+    <title>Panel - Sistema de Facturación</title>
+    <link rel="stylesheet" href="~/css/panel.css" />
+</head>
+<body>
+    <header class="menu-superior">
+        <nav>
+            <ul>
+                <li><a asp-controller="Panel" asp-action="Dashboard">Inicio</a></li>
+                <li><a asp-controller="Mantenimiento" asp-action="DefaultMantenimiento">Mantenimiento</a></li>
+                <li><a href="#">Operaciones</a></li>
+                <li><a href="#">Reportes</a></li>
+                <li><a href="#">Seguridad</a></li>
+                <li><a href="#">Utilitarios</a></li>
+                <li><a href="#">Ayuda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="titulo">
+        <img src="~/images/logo.png" alt="Logo_Empresa" class="logo"/>
+        Sistema de Facturación Electronica
+    </div>
+
+    @RenderBody()
+    
+    <footer class="pie">
+        <span>Copyright © 2025 / Versión 1.0</span>
+        <span class="usuario">Usuario: @ViewBag.UsuarioActual</span>
+    </footer>
+</body>
+</html>

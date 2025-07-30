@@ -1,44 +1,10 @@
 @{
-    Layout = null; 
+    Layout = "~/Views/Shared/_header.cshtml";
+    ViewData["Title"] = "Dashboard";
 }
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel - Sistema de Facturación</title>
-    <link rel="stylesheet" href="~/css/panel.css" />
-</head>
-<body>
-    <header class="menu-superior">
-        <nav>
-            <ul>
-                <li>Inicio</li>
-                <li>Mantenimiento</li>
-                <li>Operaciones</li>
-                <li>Reportes</li>
-                <li>Seguridad</li>
-                <li>Utilitarios</li>
-                <li>Ayuda</li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="titulo">
-        Sistema de Facturación Electronica
-    </div>
-
     <main class="contenido">
         <h2>Bienvenido</h2>
         <div class="imagen-cajas">
             <img src="~/images/CajasAlmacen.png" alt="Cajas" />
         </div>
     </main>
-
-    <footer class="pie">
-        <span>Copyright © 2025 / Versión 1.0</span>
-        <span class="usuario">Usuario: @ViewBag.UsuarioActual</span>
-    </footer>
-</body>
-</html>

@@ -66,17 +66,19 @@ namespace ProyectoFinal.Controllers
             var usuario = await _context.UserLogins
                 .FirstOrDefaultAsync(u =>
                     u.LogUsuario == modelo.LogUsuario &&
-                    u.LogClave == modelo.LogClave 
+                    u.LogClave == modelo.LogClave
                 );
 
             if (usuario != null)
             {
                 HttpContext.Session.SetString("usuario", usuario.LogUsuario ?? "");
-
-                return RedirectToAction("Dashboard", "Panel"); 
+                ViewBag.Mensaje = "Credenciales correctas. Redirigiendo...";
+                ViewBag.CredencialesValidas = true;
+                return View(modelo); 
             }
 
             ViewBag.Mensaje = "Credenciales incorrectas.";
+            ViewBag.CredencialesValidas = false;
             return View(modelo);
         }
 
