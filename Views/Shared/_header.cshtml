@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="~/images/Favicon.png" />
     <title>Panel - Sistema de Facturación</title>
-    <link rel="stylesheet" href="~/css/panel.css" />
+    <link rel="stylesheet" href="~/css/panel.css" asp-append-version="true" />
 </head>
 <body>
     <header class="menu-superior">
@@ -33,5 +33,6 @@
         <span>Copyright © 2025 / Versión 1.0</span>
         <span class="usuario">Usuario: @ViewBag.UsuarioActual</span>
     </footer>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

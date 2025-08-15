@@ -44,6 +44,7 @@ body {
 .menu-superior li:hover {
     background-color: #ffc270;
 }
+
 .menu-superior li a {
     color: black;
 }
@@ -73,35 +74,179 @@ body {
     top: 50%;
     transform: translateY(-50%);
 }
-.panel-grid {
+
+/* CONTENEDOR PRINCIPAL CON 3 COLUMNAS - MODIFICADO */
+.contenedor-principal {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 10px;
     width: 100%;
     flex-grow: 1;
+    padding: 10px;
+    align-items: start;
 }
+
+/* Menú lateral izquierdo */
 .menu-lateral {
     background: #4b2600; 
     padding: 10px;
-    width: 200px;
+    border-radius: 8px;
     height: fit-content;
 }
-.menu-lateral li{
+
+.menu-lateral li {
     list-style: none;
+}
+
+/* Contenido central */
+.contenido-central {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center; 
+}
+.central-wrapper {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Menú de acciones derecho - NUEVO */
+.menu-accion {
+    background: black;
+    padding: 10px;
+    border-radius: 8px;
+    height: fit-content;
+}
+.menu-accion li{
+    list-style: none;
+}
+.menu-accion li a img{
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+.Msj-Status {
+    width: 100%;
+    padding: 12px;
+    background-color: #7979fc;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.empresa-form {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.empresa-imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.empresa-imagen img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.empresa-imagen button {
+    padding: 8px 16px;
+    background-color: #f57c1f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.empresa-imagen button:hover {
+    background-color: #ff9e3c;
+}
+
+.empresa-campos {
+    flex: 1;
+    min-width: 250px;
+}
+
+.empresa-campos .campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.empresa-campos .campo label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.empresa-campos .campo input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.empresa-campos .campo input:focus {
+    outline: none;
+    border-color: #f57c1f;
+    box-shadow: 0 0 8px rgba(245,124,31,0.3);
+}
+
+
+
+/* Botones estilo madera */
+.b0t0n-menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin: 6px 0;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 3px 0 #3e1f00;
+    transition: transform 0.1s, box-shadow 0.1s;
+    cursor: pointer;
+    width: 100%;
 }
 .boton-menu {
     display: block;
-    background: linear-gradient(to bottom, #a0522d, #8b4513); /* efecto madera */
+    background: linear-gradient(to bottom, #a0522d, #8b4513);
     color: white;
     text-align: center;
-    padding: 6px 10px;
-    margin: 4px 0;
+    padding: 12px;
+    margin: 6px 0;
     text-decoration: none;
     border: 2px solid #5c2c00;
     border-radius: 8px;
     font-weight: bold;
     font-family: 'Segoe UI', sans-serif;
-    box-shadow: 0 3px 0 #3e1f00; /* efecto de profundidad */
+    box-shadow: 0 3px 0 #3e1f00;
     transition: transform 0.1s, box-shadow 0.1s;
+    cursor: pointer;
+    width: 100%;
 }
 
 .boton-menu:hover {
@@ -109,6 +254,92 @@ body {
     transform: translateY(1px);
     box-shadow: 0 1px 0 #3e1f00;
 }
+
+/* Formulario de bodega */
+.form-bodega {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.form-bodega h2 {
+    color: #4b2600;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.form-campos {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: end;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px;
+    min-width: 180px;
+}
+
+.campo label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.campo input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.2s;
+}
+.campo input:focus {
+    outline: none;
+    border-color: #f57c1f;
+    box-shadow: 0 0 8px rgba(245,124,31,0.3);
+}
+.data-grid-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+table thead {
+    background: linear-gradient(90deg, #f57c1f, #ffb86c);
+    color: white;
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+table tbody tr:hover {
+    background-color: #ffe5b4;
+}
+
+/* ESTILOS ANTIGUOS MANTENIDOS PARA COMPATIBILIDAD */
+.panel-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    width: 100%;
+    flex-grow: 1;
+}
+
 .panel-grid .contenid0 {
     width: 80%;
     margin: 0;
@@ -117,7 +348,7 @@ body {
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     text-align: center;
 }
-/* Contenido principal */
+
 .contenido {
     flex-grow: 1;
     background-color: white;
@@ -156,6 +387,12 @@ body {
 /* MEDIA QUERIES */
 /* ===================== */
 
+@media (max-width: 1024px) {
+    .contenedor-principal {
+        grid-template-columns: 180px 1fr 180px;
+    }
+}
+
 @media (max-width: 768px) {
     .menu-superior ul {
         flex-direction: column;
@@ -169,7 +406,7 @@ body {
 
     .titulo {
         font-size: 1.2rem;
-        padding-left: 60px; /* Deja espacio para logo */
+        padding-left: 60px;
     }
 
     .titulo .logo {
@@ -177,17 +414,32 @@ body {
         height: 45px;
     }
 
+    /* Layout de 3 columnas se convierte en columna única en móvil */
+    .contenedor-principal {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu-lateral,
+    .menu-accion,
+    .contenido-central {
+        width: 100%;
+    }
+
     .contenido {
         width: 95%;
         margin: 15px auto;
         padding: 15px;
     }
+
     .contenid0 {
         width: 95%;
         margin: 15px auto;
         padding: 15px;
     }
-     .panel-grid {
+
+    .panel-grid {
         grid-template-columns: 1fr;
     }
 

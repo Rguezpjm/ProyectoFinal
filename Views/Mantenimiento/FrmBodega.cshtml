@@ -1,0 +1,123 @@
+@model List<ProyectoFinal.Models.Bodega>
+@{
+    Layout = "~/Views/Shared/_header.cshtml";
+    ViewData["Title"] = "Mantenimiento";
+}
+
+<div class="contenedor-principal">
+    <aside class="menu-lateral">
+        <ul>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmEmpresa" class="boton-menu">Crear Empresa</a></li>
+            <li><a href="#" class="boton-menu">Crear Caja</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmBodega" class="boton-menu">Crear Bodega</a></li>
+            <li><a href="#" class="boton-menu">Crear Cliente</a></li>
+            <li><a href="#" class="boton-menu">Crear Producto</a></li>
+            <li><a href="#" class="boton-menu">Crear Suplidor</a></li>
+        </ul>
+    </aside>
+
+   <section class="contenido-central">
+    <div class="central-wrapper">
+        <h2>Crear Bodega</h2>
+
+        <form id="frmBodega" asp-controller="Mantenimiento" asp-action="FrmBodega" method="post">
+            <div class="form-bodega">
+                <div class="form-campos">
+                    <div class="campo">
+                        <label for="codigo">Código:</label>
+                        <input type="text" id="codigo" name="BodCodigo" value="@(ViewBag.ProximoID ?? "")" />
+                    </div>
+                    <div class="campo">
+                        <label for="referencia">Referencia:</label>
+                        <input type="text" id="referencia" name="BodReferencia" value="@(ViewBag.Referencia ?? "")" />
+                    </div>
+                    <div class="campo">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion" name="BodDescripcion" value="@(ViewBag.Descripcion ?? "")" />
+                    </div>
+                </div>
+
+                <!-- DataGrid -->
+                <div class="data-grid-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Referencia</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaBodegas">
+                            @foreach (var b in Model)
+                            {
+                                <tr>
+                                    <td>@b.BodCodigo</td>
+                                    <td>@b.BodReferencia</td>
+                                    <td>@b.BodDescripcion</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+        <div class="Msj-Status" id="mensaje">
+            @(ViewBag.Mensaje ?? "Mensaje:")
+        </div>
+    </div>
+</section>
+
+
+    <aside class="menu-accion">
+        <ul>
+            <li>
+                <button type="submit" form="frmBodega" name="accion" value="Aceptar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Aceptar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmBodega" name="accion" value="Nuevo" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Nuevo.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmBodega" name="accion" value="Cancelar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Cancelar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmBodega" name="accion" value="Buscar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Buscar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmBodega" name="accion" value="Modificar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Modificar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmBodega" name="accion" value="Printer" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Printer.png")" />
+                </button>
+            </li>
+        </ul>
+    </aside>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("frmBodega");
+        const codigoInput = document.getElementById("codigo");
+
+        form.addEventListener("submit", function(e) {
+            const accion = e.submitter?.value; 
+
+            if (accion === "Aceptar" || accion === "Nuevo" || accion === "Cancelar") {
+                codigoInput.readOnly = true;
+            } else if (accion === "Buscar" || accion === "Modificar" || accion === "Printer") {
+                codigoInput.readOnly = false;
+                codigoInput.focus();
+            }
+        });
+    });
+</script>

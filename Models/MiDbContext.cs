@@ -39,11 +39,13 @@ public partial class MiDbContext : DbContext
     {
         modelBuilder.Entity<Bodega>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("BODEGA");
+            entity.HasKey(e => e.BodCodigo);
 
-            entity.Property(e => e.BodCodigo).HasColumnName("BOD_CODIGO");
+            entity.ToTable("BODEGA");
+
+            entity.Property(e => e.BodCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("BOD_CODIGO");
             entity.Property(e => e.BodDescripcion)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -138,11 +140,13 @@ public partial class MiDbContext : DbContext
 
         modelBuilder.Entity<Empresa>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("EMPRESA");
+            entity.HasKey(e => e.EmpCodigo);
 
-            entity.Property(e => e.EmpCodigo).HasColumnName("EMP_CODIGO");
+            entity.ToTable("EMPRESA");
+
+            entity.Property(e => e.EmpCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("EMP_CODIGO");
             entity.Property(e => e.EmpDireccion)
                 .HasMaxLength(50)
                 .IsUnicode(false)

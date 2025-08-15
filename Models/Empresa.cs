@@ -5,7 +5,7 @@ namespace ProyectoFinal.Models;
 
 public partial class Empresa
 {
-    public int? EmpCodigo { get; set; }
+    public int EmpCodigo { get; set; }
 
     public string? EmpNombre { get; set; }
 

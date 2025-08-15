@@ -1,0 +1,106 @@
+@model ProyectoFinal.Models.Empresa
+@{
+    Layout = "~/Views/Shared/_header.cshtml";
+    ViewData["Title"] = "Mantenimiento Empresa";
+}
+
+<div class="contenedor-principal">
+    <aside class="menu-lateral">
+        <ul>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmEmpresa" class="boton-menu">Crear Empresa</a></li>
+            <li><a href="#" class="boton-menu">Crear Caja</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmBodega" class="boton-menu">Crear Bodega</a></li>
+            <li><a href="#" class="boton-menu">Crear Cliente</a></li>
+            <li><a href="#" class="boton-menu">Crear Producto</a></li>
+            <li><a href="#" class="boton-menu">Crear Suplidor</a></li>
+        </ul>
+    </aside>
+
+    <section class="contenido-central">
+        <div class="central-wrapper">
+            <h2>Crear Empresa</h2>
+
+            <form id="frmEmpresa" asp-controller="Mantenimiento" asp-action="FrmEmpresa" method="post" enctype="multipart/form-data">
+                <div class="empresa-form">
+                    <!-- Imagen y botón -->
+                    <div class="empresa-imagen">
+                        <img src="@(Model?.EmpLogo != null 
+                                ? $"data:image/png;base64,{Convert.ToBase64String(Model?.EmpLogo)}" 
+                                : Url.Content("~/images/logo.png"))" 
+                        alt="Logo Empresa" 
+                        style="width:100px; height:100px; object-fit:contain;" />
+                        <input type="file" name="Logo" id="inputLogo" style="display:none;" />
+                        <button type="button" id="btnCambiarLogo">Cambiar Logo</button>
+                    </div>
+
+                    <!-- Campos de la empresa -->
+                    <div class="empresa-campos">
+                        <div class="campo">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="EmpNombre" value="@(Model?.EmpNombre ?? "")" />
+                        </div>
+                        <div class="campo">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" name="EmpDireccion" value="@(Model?.EmpDireccion ?? "")" />
+                        </div>
+                        <div class="campo">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="text" id="telefono" name="EmpTelefono" value="@(Model?.EmpTelefono ?? "")" />
+                        </div>
+                        <div class="campo">
+                            <label for="rnc">RNC:</label>
+                            <input type="text" id="rnc" name="EmpRnc" value="@(Model?.EmpRnc ?? "")" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="Msj-Status" id="mensaje">
+                @(ViewBag.Mensaje ?? "Mensaje:")
+            </div>
+        </div>
+    </section>
+
+    <aside class="menu-accion">
+        <ul>
+            <li>
+                <button type="submit" form="frmEmpresa" name="accion" value="Aceptar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Aceptar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmEmpresa" name="accion" value="Nuevo" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Nuevo.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmEmpresa" name="accion" value="Cancelar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Cancelar.png")" />
+                </button>
+            </li>
+        </ul>
+    </aside>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnCambiarLogo = document.getElementById("btnCambiarLogo");
+        const inputLogo = document.getElementById("inputLogo");
+        const logoEmpresa = document.getElementById("logoEmpresa");
+
+        btnCambiarLogo.addEventListener("click", function() {
+            inputLogo.click();
+        });
+
+        inputLogo.addEventListener("change", function(e) {
+            const file = e.target.files[0];
+            if(file){
+                const reader = new FileReader();
+                reader.onload = function(event){
+                    logoEmpresa.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
