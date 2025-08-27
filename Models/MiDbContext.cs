@@ -58,11 +58,13 @@ public partial class MiDbContext : DbContext
 
         modelBuilder.Entity<Caja>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("CAJA");
+            entity.HasKey(e => e.CajCodigo).HasName("PK_Caja");
 
-            entity.Property(e => e.CajCodigo).HasColumnName("CAJ_CODIGO");
+            entity.ToTable("CAJA");
+
+            entity.Property(e => e.CajCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("CAJ_CODIGO");
             entity.Property(e => e.CajDescripcion)
                 .HasMaxLength(50)
                 .IsUnicode(false)

@@ -5,7 +5,7 @@ namespace ProyectoFinal.Models;
 
 public partial class Caja
 {
-    public int? CajCodigo { get; set; }
+    public int CajCodigo { get; set; }
 
     public string? CajReferencia { get; set; }
 

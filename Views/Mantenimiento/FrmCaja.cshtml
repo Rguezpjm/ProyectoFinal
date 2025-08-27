@@ -1,0 +1,121 @@
+@model ProyectoFinal.Models.Caja
+@{
+    Layout = "~/Views/Shared/_header.cshtml";
+    ViewData["Title"] = "Mantenimiento Cajas";
+}
+
+<div class="contenedor-principal">
+    <aside class="menu-lateral">
+        <ul>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmEmpresa" class="boton-menu">Crear Empresa</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmCaja" class="boton-menu">Crear Caja</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmBodega" class="boton-menu">Crear Bodega</a></li>
+            <li><a href="#" class="boton-menu">Crear Cliente</a></li>
+            <li><a href="#" class="boton-menu">Crear Producto</a></li>
+            <li><a href="#" class="boton-menu">Crear Suplidor</a></li>
+        </ul>
+    </aside>
+
+    <section class="contenido-central">
+        <div style="padding:20px; background-color:white; min-height:500px; width:1000px;">
+            <h2 style="text-align:center;">Crear Cajas</h2>
+
+            <form id="frmCaja" method="post">
+                <div style="padding:20px; background:linear-gradient(#fff, #f7f0d8); margin:auto;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="width:120px;">Código.:</td>
+                            <td>
+                                <input type="number" name="CajCodigo" value="@Model?.CajCodigo" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Referencia.:</td>
+                            <td>
+                                <input type="text" name="CajReferencia" value="@Model?.CajReferencia" style="width:250px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descripción.:</td>
+                            <td>
+                                <input type="text" name="CajDescripcion" value="@Model?.CajDescripcion" style="width:250px;" />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br />
+
+                    <div style="width:100%; height:200px; background-color:#d3d3d3;  overflow:auto;">
+                        <table style="width:100%; border-collapse:collapse;" border="1">
+                            <thead style="background:#b0b0b0; text-align:center;">
+                                <tr>
+                                    <th style="padding:5px;">Código</th>
+                                    <th style="padding:5px;">Referencia</th>
+                                    <th style="padding:5px;">Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.ListaCajas != null && ViewBag.ListaCajas.Count > 0)
+                                {
+                                    foreach (var caja in ViewBag.ListaCajas)
+                                    {
+                                        <tr>
+                                            <td style="padding:5px; text-align:center;">@caja.CajCodigo</td>
+                                            <td style="padding:5px;">@caja.CajReferencia</td>
+                                            <td style="padding:5px;">@caja.CajDescripcion</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="3" style="text-align:center; padding:10px;">No hay datos</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top:15px; background-color:#cce5ff; border:1px solid #99ccff; padding:10px; margin:auto;">
+                    <b>Mensaje:</b> @ViewBag.Mensaje
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <aside class="menu-accion">
+        <ul>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Aceptar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Aceptar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Nuevo" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Nuevo.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Cancelar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Cancelar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Buscar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Buscar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Modificar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Modificar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Imprimir" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Printer.png")" />
+                </button>
+            </li>
+        </ul>
+    </aside>
+</div>

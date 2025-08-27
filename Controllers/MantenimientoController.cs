@@ -60,7 +60,6 @@ namespace ProyectoFinal.Controllers
                 case "Aceptar":
                     if (codigo > 0 && !string.IsNullOrWhiteSpace(referencia) && !string.IsNullOrWhiteSpace(descripcion))
                     {
-                        // Crear nueva bodega
                         var nuevaBodega = new Bodega
                         {
                             BodCodigo = codigo,
@@ -78,17 +77,14 @@ namespace ProyectoFinal.Controllers
                     break;
 
                 case "Nuevo":
-                    // Limpiar campos (solo usando ViewBag para la vista)
                     ViewBag.ProximoID = (_context.Bodegas.Max(b => b.BodCodigo)) + 1;
                     mensaje = "Ingrese nueva bodega.";
                     break;
 
                 case "Cancelar":
-                    // Redirigir a la misma página o limpiar campos
                     return RedirectToAction("FrmBodega");
 
                 case "Buscar":
-                    // Buscar bodega por código
                     var bodegaBuscada = _context.Bodegas.FirstOrDefault(b => b.BodCodigo == codigo);
                     if (bodegaBuscada != null)
                     {
@@ -104,7 +100,6 @@ namespace ProyectoFinal.Controllers
                     break;
 
                 case "Modificar":
-                    // Modificar bodega existente
                     var bodegaModificar = _context.Bodegas.FirstOrDefault(b => b.BodCodigo == codigo);
                     if (bodegaModificar != null)
                     {
@@ -120,7 +115,6 @@ namespace ProyectoFinal.Controllers
                     break;
 
                 case "Printer":
-                    // Aquí podrías generar un PDF o exportar la tabla
                     mensaje = "Función de impresión aún no implementada.";
                     break;
 
@@ -129,7 +123,6 @@ namespace ProyectoFinal.Controllers
                     break;
             }
 
-            // Recargar la lista de bodegas y el próximo código
             var bodegas = _context.Bodegas.OrderBy(b => b.BodCodigo).ToList();
             ViewBag.ProximoID = (bodegas.Count > 0) ? bodegas.Max(b => b.BodCodigo) + 1 : 1;
             ViewBag.Mensaje = mensaje;
@@ -175,57 +168,65 @@ namespace ProyectoFinal.Controllers
                 case "Aceptar":
                     if (!string.IsNullOrWhiteSpace(nombre))
                     {
-                        // Si no se envió código, generar el próximo ID
                         if (codigo <= 0)
                             codigo = (_context.Empresas.Any()) ? _context.Empresas.Max(e => e.EmpCodigo) + 1 : 1;
 
-                        var empresaExistente = _context.Empresas.FirstOrDefault(e => e.EmpCodigo == codigo);
+                        bool existeDuplicado = _context.Empresas.Any(e =>
+                            (e.EmpNombre.ToLower() == nombre.ToLower() || e.EmpRnc == rnc) &&
+                            e.EmpCodigo != codigo);
 
-                        if (empresaExistente == null)
+                        if (existeDuplicado)
                         {
-                            // Crear nueva empresa
-                            var nuevaEmpresa = new Empresa
-                            {
-                                EmpCodigo = codigo,
-                                EmpNombre = nombre,
-                                EmpDireccion = direccion,
-                                EmpTelefono = telefono,
-                                EmpRnc = rnc
-                            };
-
-                            if (Logo != null && Logo.Length > 0)
-                            {
-                                using (var ms = new MemoryStream())
-                                {
-                                    Logo.CopyTo(ms);
-                                    nuevaEmpresa.EmpLogo = ms.ToArray();
-                                }
-                            }
-
-                            _context.Empresas.Add(nuevaEmpresa);
-                            mensaje = "Empresa creada correctamente.";
+                            mensaje = "Ya hay una empresa registrada.";
                         }
                         else
                         {
-                            // Modificar empresa existente
-                            empresaExistente.EmpNombre = nombre;
-                            empresaExistente.EmpDireccion = direccion;
-                            empresaExistente.EmpTelefono = telefono;
-                            empresaExistente.EmpRnc = rnc;
+                            var empresaExistente = _context.Empresas.FirstOrDefault(e => e.EmpCodigo == codigo);
 
-                            if (Logo != null && Logo.Length > 0)
+                            if (empresaExistente == null)
                             {
-                                using (var ms = new MemoryStream())
+                                var nuevaEmpresa = new Empresa
                                 {
-                                    Logo.CopyTo(ms);
-                                    empresaExistente.EmpLogo = ms.ToArray();
+                                    EmpCodigo = codigo,
+                                    EmpNombre = nombre,
+                                    EmpDireccion = direccion,
+                                    EmpTelefono = telefono,
+                                    EmpRnc = rnc
+                                };
+
+                                if (Logo != null && Logo.Length > 0)
+                                {
+                                    using (var ms = new MemoryStream())
+                                    {
+                                        Logo.CopyTo(ms);
+                                        nuevaEmpresa.EmpLogo = ms.ToArray();
+                                    }
                                 }
+
+                                _context.Empresas.Add(nuevaEmpresa);
+                                mensaje = "Empresa creada correctamente.";
+                            }
+                            else
+                            {
+                                empresaExistente.EmpNombre = nombre;
+                                empresaExistente.EmpDireccion = direccion;
+                                empresaExistente.EmpTelefono = telefono;
+                                empresaExistente.EmpRnc = rnc;
+
+                                if (Logo != null && Logo.Length > 0)
+                                {
+                                    using (var ms = new MemoryStream())
+                                    {
+                                        Logo.CopyTo(ms);
+                                        empresaExistente.EmpLogo = ms.ToArray();
+                                    }
+                                }
+
+                                mensaje = "Empresa modificada correctamente.";
                             }
 
-                            mensaje = "Empresa modificada correctamente.";
+                            _context.SaveChanges();
                         }
-
-                        _context.SaveChanges();
                     }
                     else
                     {
@@ -265,6 +266,148 @@ namespace ProyectoFinal.Controllers
             ViewBag.Mensaje = mensaje;
 
             return View(empresa);
+        }
+
+
+        [HttpGet]
+        public IActionResult FrmCaja()
+        {
+            var usuario = HttpContext.Session.GetString("usuario");
+            if (string.IsNullOrEmpty(usuario))
+                return RedirectToAction("Login", "Acceso");
+
+            ViewBag.UsuarioActual = usuario;
+
+            var caja = _context.Cajas.FirstOrDefault() ?? new Caja();
+            ViewBag.ProximoID = (_context.Cajas.Any()) ? _context.Cajas.Max(c => c.CajCodigo) + 1 : 1;
+            ViewBag.ListaCajas = _context.Cajas.ToList();
+            return View(caja);
+        }
+        [HttpPost]
+        public IActionResult FrmCaja(IFormCollection form)
+        {
+            var usuario = HttpContext.Session.GetString("usuario");
+            if (string.IsNullOrEmpty(usuario))
+                return RedirectToAction("Login", "Acceso");
+
+            ViewBag.UsuarioActual = usuario;
+
+            string accion = form["accion"];
+            int codigo = int.TryParse(form["CajCodigo"], out var c) ? c : 0;
+            string referencia = form["CajReferencia"];
+            string descripcion = form["CajDescripcion"];
+
+            string mensaje = "";
+            Caja modelo = new Caja();
+            List<Caja> listaCajas = _context.Cajas.ToList(); 
+
+            switch (accion)
+            {
+                case "Aceptar":
+                    if (!string.IsNullOrWhiteSpace(referencia))
+                    {
+                        if (codigo <= 0)
+                            codigo = (_context.Cajas.Any()) ? _context.Cajas.Max(ca => ca.CajCodigo) + 1 : 1;
+
+                        var cajaExistente = _context.Cajas.FirstOrDefault(ca => ca.CajCodigo == codigo);
+
+                        if (cajaExistente == null)
+                        {
+                            var nuevaCaja = new Caja
+                            {
+                                CajCodigo = codigo,
+                                CajReferencia = referencia,
+                                CajDescripcion = descripcion
+                            };
+                            _context.Cajas.Add(nuevaCaja);
+                            mensaje = "Caja creada correctamente.";
+                        }
+                        else
+                        {
+                            cajaExistente.CajReferencia = referencia;
+                            cajaExistente.CajDescripcion = descripcion;
+                            mensaje = "Caja modificada correctamente.";
+                        }
+
+                        _context.SaveChanges();
+                        modelo = new Caja(); 
+                        listaCajas = _context.Cajas.ToList();
+                    }
+                    else
+                    {
+                        mensaje = "La referencia es obligatoria.";
+                        modelo = new Caja { CajCodigo = codigo, CajReferencia = referencia, CajDescripcion = descripcion };
+                    }
+                    break;
+
+                case "Nuevo":
+                    mensaje = "Ingrese nueva caja.";
+                    modelo = new Caja
+                    {
+                        CajCodigo = (_context.Cajas.Any()) ? _context.Cajas.Max(c => c.CajCodigo) + 1 : 1
+                    };
+                    listaCajas = _context.Cajas.ToList();
+                    break;
+
+                case "Cancelar":
+                    mensaje = "Formulario limpio.";
+                    modelo = new Caja(); 
+                    listaCajas = _context.Cajas.ToList(); 
+                    break;
+
+                case "Buscar":
+                    if (codigo > 0)
+                    {
+                        var cajaBuscada = _context.Cajas.Where(ca => ca.CajCodigo == codigo).ToList();
+                        if (cajaBuscada.Any())
+                        {
+                            mensaje = "Caja encontrada.";
+                            listaCajas = cajaBuscada;
+                            modelo = cajaBuscada.First(); 
+                        }
+                        else
+                        {
+                            mensaje = "Caja no encontrada.";
+                            listaCajas = new List<Caja>(); 
+                            modelo = new Caja(); 
+                        }
+                    }
+                    else
+                    {
+                        mensaje = "Ingrese un código para buscar.";
+                        modelo = new Caja(); 
+                        listaCajas = _context.Cajas.ToList();
+                    }
+                    break;
+
+                case "Modificar":
+                    var cajaMod = _context.Cajas.FirstOrDefault(ca => ca.CajCodigo == codigo);
+                    if (cajaMod != null)
+                    {
+                        cajaMod.CajReferencia = referencia;
+                        cajaMod.CajDescripcion = descripcion;
+                        _context.SaveChanges();
+                        mensaje = "Caja modificada correctamente.";
+                    }
+                    else
+                    {
+                        mensaje = "Caja no encontrada para modificar.";
+                    }
+                    modelo = new Caja(); 
+                    listaCajas = _context.Cajas.ToList(); 
+                    break;
+
+                default:
+                    mensaje = "Acción desconocida.";
+                    modelo = new Caja();
+                    listaCajas = _context.Cajas.ToList();
+                    break;
+            }
+
+            ViewBag.Mensaje = mensaje;
+            ViewBag.ListaCajas = listaCajas;
+
+            return View(modelo);
         }
 
 

@@ -155,7 +155,6 @@ C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\rjsmc
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\scopedcss\bundle\ProyectoFinal.styles.css
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\scopedcss\projectbundle\ProyectoFinal.bundle.scp.css
-C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\xrllxg2aul-7ctb8y72r6.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\fbethnjv0d-b9sayid5wm.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cmfstn6bif-w4apyz6sud.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\uz5nlogasf-xtxxf3hu2r.gz
@@ -233,3 +232,4 @@ C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\Proye
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ProyectoFinal.genruntimeconfig.cache
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ref\ProyectoFinal.dll
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cqdzzadyzl-kvj9g9c90f.gz
+C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\xrllxg2aul-9g0z9jj2mo.gz
