@@ -37,4 +37,4 @@ El sistema permite la gestión de productos, clientes, proveedores y ventas, con
 ## Instalación y Configuración
 1. Clonar este repositorio:  
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone [<URL_DEL_REPOSITORIO>](https://github.com/Rguezpjm/ProyectoFinal.git)
