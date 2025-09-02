@@ -231,5 +231,6 @@ C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\refin
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ProyectoFinal.pdb
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ProyectoFinal.genruntimeconfig.cache
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\ref\ProyectoFinal.dll
-C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cqdzzadyzl-kvj9g9c90f.gz
 C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\xrllxg2aul-9g0z9jj2mo.gz
+C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\cqdzzadyzl-asciwfst4f.gz
+C:\Users\Jose\Desktop\Proyectos\Punto_Venta\ProyectoFinal\obj\Debug\net9.0\compressed\0nhka5pun3-p10gm9tugs.gz

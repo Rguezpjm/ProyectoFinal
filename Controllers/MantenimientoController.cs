@@ -21,6 +21,19 @@ namespace ProyectoFinal.Controllers
                 return RedirectToAction("Login", "Acceso");
 
             ViewBag.UsuarioActual = usuario;
+
+            var empresa = _context.Empresas.FirstOrDefault();
+            if (empresa != null && empresa.EmpLogo != null)
+            {
+                string base64Logo = Convert.ToBase64String(empresa.EmpLogo);
+                string imageSrc = $"data:image/png;base64,{base64Logo}";
+                ViewBag.EmpLogo = imageSrc;
+            }
+            else
+            {
+                ViewBag.EmpLogo = Url.Content("~/images/logo.png");
+            }
+
             return View();
         }
 
@@ -299,7 +312,7 @@ namespace ProyectoFinal.Controllers
 
             string mensaje = "";
             Caja modelo = new Caja();
-            List<Caja> listaCajas = _context.Cajas.ToList(); 
+            List<Caja> listaCajas = _context.Cajas.ToList();
 
             switch (accion)
             {
@@ -330,7 +343,7 @@ namespace ProyectoFinal.Controllers
                         }
 
                         _context.SaveChanges();
-                        modelo = new Caja(); 
+                        modelo = new Caja();
                         listaCajas = _context.Cajas.ToList();
                     }
                     else
@@ -351,8 +364,8 @@ namespace ProyectoFinal.Controllers
 
                 case "Cancelar":
                     mensaje = "Formulario limpio.";
-                    modelo = new Caja(); 
-                    listaCajas = _context.Cajas.ToList(); 
+                    modelo = new Caja();
+                    listaCajas = _context.Cajas.ToList();
                     break;
 
                 case "Buscar":
@@ -363,19 +376,19 @@ namespace ProyectoFinal.Controllers
                         {
                             mensaje = "Caja encontrada.";
                             listaCajas = cajaBuscada;
-                            modelo = cajaBuscada.First(); 
+                            modelo = cajaBuscada.First();
                         }
                         else
                         {
                             mensaje = "Caja no encontrada.";
-                            listaCajas = new List<Caja>(); 
-                            modelo = new Caja(); 
+                            listaCajas = new List<Caja>();
+                            modelo = new Caja();
                         }
                     }
                     else
                     {
                         mensaje = "Ingrese un código para buscar.";
-                        modelo = new Caja(); 
+                        modelo = new Caja();
                         listaCajas = _context.Cajas.ToList();
                     }
                     break;
@@ -393,8 +406,8 @@ namespace ProyectoFinal.Controllers
                     {
                         mensaje = "Caja no encontrada para modificar.";
                     }
-                    modelo = new Caja(); 
-                    listaCajas = _context.Cajas.ToList(); 
+                    modelo = new Caja();
+                    listaCajas = _context.Cajas.ToList();
                     break;
 
                 default:
@@ -410,6 +423,184 @@ namespace ProyectoFinal.Controllers
             return View(modelo);
         }
 
+        [HttpGet]
+        public IActionResult FrmProductos()
+        {
+            var usuario = HttpContext.Session.GetString("usuario");
+            if (string.IsNullOrEmpty(usuario))
+                return RedirectToAction("Login", "Acceso");
+
+            ViewBag.UsuarioActual = usuario;
+
+            return View();
+        }
+        [HttpGet]
+        public IActionResult FrmSuplidores()
+        {
+            var usuario = HttpContext.Session.GetString("usuario");
+            if (string.IsNullOrEmpty(usuario))
+                return RedirectToAction("Login", "Acceso");
+
+            ViewBag.UsuarioActual = usuario;
+
+            var modelo = new Suplidore();
+            ViewBag.ProximoID = (_context.Suplidores.Any()) ? _context.Suplidores.Max(s => s.CodSuplidor) + 1 : 1;
+            ViewBag.ListaSuplidores = _context.Suplidores.ToList();
+            return View(modelo);
+        }
+
+        [HttpPost]
+        public IActionResult FrmSuplidores(IFormCollection form)
+        {
+            var usuario = HttpContext.Session.GetString("usuario");
+            if (string.IsNullOrEmpty(usuario))
+                return RedirectToAction("Login", "Acceso");
+
+            ViewBag.UsuarioActual = usuario;
+
+            string accion = form["accion"];
+            int.TryParse(form["CodSuplidor"], out int codSuplidor);
+
+            string nombre = form["NombreSuplidor"];
+            string suplidor = form["Suplidor"];
+            string apellido = form["ApellidoSuplidor"];
+            string rnc = form["RncSuplidor"];
+            string cedula = form["CedulaContacto"];
+            int.TryParse(form["TelSuplidor"], out int tel);
+            int.TryParse(form["CelularContacto"], out int cel);
+            string direccion = form["DirreccionSuplidor"];
+            string email = form["EmailSuplidor"];
+
+            string mensaje = "";
+            Suplidore modelo = new Suplidore();
+            List<Suplidore> lista = _context.Suplidores.ToList();
+
+            switch (accion)
+            {
+                case "Aceptar":
+                    if (!string.IsNullOrWhiteSpace(suplidor))
+                    {
+                        var existente = _context.Suplidores.FirstOrDefault(s => s.CodSuplidor == codSuplidor);
+
+                        if (existente != null)
+                        {
+                            // Modificar existente
+                            existente.NombreSuplidor = nombre;
+                            existente.Suplidor = suplidor;
+                            existente.ApellidoSuplidor = apellido;
+                            existente.RncSuplidor = rnc;
+                            existente.CedulaContacto = cedula;
+                            existente.TelSuplidor = tel;
+                            existente.CelularContacto = cel;
+                            existente.DirreccionSuplidor = direccion;
+                            existente.EmailSuplidor = email;
+
+                            mensaje = "Suplidor modificado correctamente.";
+                        }
+                        else
+                        {
+                            // Crear nuevo (sin asignar CodSuplidor)
+                            var nuevo = new Suplidore
+                            {
+                                NombreSuplidor = nombre,
+                                Suplidor = suplidor,
+                                ApellidoSuplidor = apellido,
+                                RncSuplidor = rnc,
+                                CedulaContacto = cedula,
+                                TelSuplidor = tel,
+                                CelularContacto = cel,
+                                DirreccionSuplidor = direccion,
+                                EmailSuplidor = email
+                            };
+                            _context.Suplidores.Add(nuevo);
+                            mensaje = "Suplidor creado correctamente.";
+                        }
+
+                        _context.SaveChanges();
+                        modelo = new Suplidore();
+                        lista = _context.Suplidores.ToList();
+                    }
+                    else
+                    {
+                        mensaje = "El campo Suplidor es obligatorio.";
+                    }
+                    break;
+
+                case "Nuevo":
+                    mensaje = "Ingrese nuevo suplidor.";
+                    modelo = new Suplidore();
+                    // Solo para mostrar al usuario el próximo ID (no se guarda)
+                    ViewBag.ProximoID = (_context.Suplidores.Any()) ? _context.Suplidores.Max(s => s.CodSuplidor) + 1 : 1;
+                    lista = _context.Suplidores.ToList();
+                    break;
+
+                case "Cancelar":
+                    mensaje = "Formulario limpio.";
+                    modelo = new Suplidore();
+                    lista = _context.Suplidores.ToList();
+                    break;
+
+                case "Buscar":
+                    if (codSuplidor > 0)
+                    {
+                        var buscado = _context.Suplidores.Where(s => s.CodSuplidor == codSuplidor).ToList();
+                        if (buscado.Any())
+                        {
+                            mensaje = "Suplidor encontrado.";
+                            lista = buscado;
+                            modelo = buscado.First();
+                        }
+                        else
+                        {
+                            mensaje = "Suplidor no encontrado.";
+                            lista = new List<Suplidore>();
+                            modelo = new Suplidore();
+                        }
+                    }
+                    else
+                    {
+                        mensaje = "Ingrese un código para buscar.";
+                    }
+                    break;
+
+                case "Modificar":
+                    var mod = _context.Suplidores.FirstOrDefault(s => s.CodSuplidor == codSuplidor);
+                    if (mod != null)
+                    {
+                        mod.NombreSuplidor = nombre;
+                        mod.Suplidor = suplidor;
+                        mod.ApellidoSuplidor = apellido;
+                        mod.RncSuplidor = rnc;
+                        mod.CedulaContacto = cedula;
+                        mod.TelSuplidor = tel;
+                        mod.CelularContacto = cel;
+                        mod.DirreccionSuplidor = direccion;
+                        mod.EmailSuplidor = email;
+
+                        _context.SaveChanges();
+                        mensaje = "Suplidor modificado correctamente.";
+                    }
+                    else
+                    {
+                        mensaje = "No se encontró el suplidor para modificar.";
+                    }
+                    modelo = new Suplidore();
+                    lista = _context.Suplidores.ToList();
+                    break;
+
+                case "Imprimir":
+                    mensaje = "Función de impresión aún no implementada.";
+                    break;
+
+                default:
+                    mensaje = "Acción desconocida.";
+                    break;
+            }
+
+            ViewBag.Mensaje = mensaje;
+            ViewBag.ListaSuplidores = lista;
+            return View(modelo);
+        }
 
     }
 }

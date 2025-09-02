@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formulario Productos</title>
+  <!-- Si usas archivo externo, coloca la ruta correcta -->
+  <link rel="stylesheet" type="text/css" href="../css/panel.css">
+</head>
+<body class="contenedor-principal">
+  <aside class="menu-lateral">
+    <ul>
+      <li><a href="#" class="boton-menu">Crear Cliente</a></li>
+      <li><a href="#" class="boton-menu">Crear Suplidor</a></li>
+    </ul>
+  </aside>
+
+  <section class="contenido-central">
+    <div class="Formulario_productos">
+
+      <!-- Fila 1 -->
+      <div class="form-group">
+        <span>Cliente:</span>
+        <input type="text" placeholder="Ingrese cliente">
+      </div>
+      <div class="form-group">
+        <span>Nombre del Producto:</span>
+        <input type="text" placeholder="Ingrese producto">
+      </div>
+
+      <!-- Fila 2: títulos -->
+      <div class="form-title">Precios / Costos</div>
+      <div class="form-title">Clasificación Productos</div>
+
+      <!-- Fila 3: 3 columnas (Precios / Bodega / Categoría) -->
+      <div class="form-group-3">
+        <div class="form-group bordered">
+          <span>Precio Compra RD$:</span>
+          <input type="text" placeholder="RD$">
+          <span>Precio Compra US$:</span>
+          <input type="text" placeholder="US$">
+        </div>
+
+        <div class="form-group bordered">
+          <span>Bodega:</span>
+          <select>
+            <option>Principal</option>
+            <option>Secundaria</option>
+            <option>Almacén 3</option>
+          </select>
+          <span>Ubicación Física:</span>
+          <select>
+            <option>Estante A</option>
+            <option>Estante B</option>
+            <option>Pasillo 3</option>
+          </select>
+        </div>
+
+        <div class="form-group bordered">
+          <span>Categoría Producto:</span>
+          <input type="text" placeholder="Categoría">
+          <span>Subcategoría:</span>
+          <input type="text" placeholder="Subcategoría">
+          <span>Referencia:</span>
+          <input type="text" placeholder="Referencia">
+        </div>
+      </div>
+
+      <!-- Bloque extra 1: Producto Activo (ocupa 2 columnas) + Se vende/Se compra (3ra columna) -->
+      <div class="form-group-3-extra">
+        <!-- ocupa 2 columnas -->
+        <div class="form-group bordered full-width">
+          <div class="checkbox-group">
+            <span>Producto Activo:</span>
+            <input type="checkbox">
+          </div>
+          <div class="checkbox-group">
+            <span>Aplicar Itebis:</span>
+            <input type="checkbox">
+          </div>
+        </div>
+
+        <div class="form-group bordered full-width">
+          <div class="checkbox-group">
+            <span>El Producto En.:</span>
+            <input type="checkbox"><span>Fisico</span>
+            <input type="checkbox"><span>Servicio</span>
+            <input type="checkbox"><span>Ocasional</span>
+            
+          </div>
+        </div>
+
+        <!-- 3ª columna: Se vende / Se compra -->
+        <div class="form-group bordered posicion">
+          <div class="venta-compra">
+            <span>Se vende por:</span>
+            <select>
+              <option>Unidad</option>
+              <option>Kilo</option>
+              <option>Litro</option>
+            </select>
+            <span>Y contiene:</span>
+            <input type="number" placeholder="Cantidad" step="0.01">
+          </div>
+          <div class="venta-compra">
+            <span>Se compra por:</span>
+            <select>
+              <option>Unidad</option>
+              <option>Kilo</option>
+              <option>Litro</option>
+            </select>
+            <span>Y contiene:</span>
+            <input type="number" placeholder="Cantidad" step="0.01">
+          </div>
+        </div>
+      </div>
+
+      <!-- Separador visual opcional -->
+      <!-- Bloque extra 2: Cantidad Minima (ocupa 2 columnas) + Nota (3ra columna) -->
+      <div class="form-group-3-extra">
+        <!-- ocupa 2 columnas: Cantidad Minima, Fecha, Suplidor, Marca, Modelo, Serie, Color -->
+        <div class="form-group bordered two-columns">
+          <span>Cantidad Minima:</span>
+          <input type="number" placeholder="Cantidad" step="0.01">
+
+          <span>Fecha Compra:</span>
+          <input type="date">
+
+          <span>Fecha Expiracion:</span>
+          <input type="date">
+
+          <span>Suplidor:</span>
+          <select>
+            <option>Producto del Valle</option>
+            <option>JAJA</option>
+            <option>Famosa</option>
+          </select>
+
+          <span>Marca:</span>
+          <select>
+            <option>Alianza</option>
+            <option>JAJA</option>
+            <option>Famosa</option>
+          </select>
+
+          <span>Modelo:</span>
+          <select>
+            <option>Aston Martin</option>
+            <option>JAJA</option>
+            <option>Famosa</option>
+          </select>
+
+          <span>Serie:</span>
+          <input type="text" placeholder="Serie">
+
+          <span>Color:</span>
+          <select>
+            <option>Amarillo</option>
+            <option>Rojo</option>
+            <option>Azul</option>
+          </select>
+        </div>
+
+        <!-- 3ra columna: Nota -->
+        <div class="form-group bordered note">
+          <span>Nota:</span>
+          <textarea placeholder="Escriba una nota..." rows="6"></textarea>
+        </div>
+      </div>
+
+    </div> <!-- .Formulario_productos -->
+  </section>
+</body>
+</html>

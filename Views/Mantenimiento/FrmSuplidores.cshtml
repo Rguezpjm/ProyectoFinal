@@ -1,0 +1,153 @@
+@model ProyectoFinal.Models.Suplidore
+@{
+    Layout = "~/Views/Shared/_header.cshtml";
+    ViewData["Title"] = "Crear Suplidor";
+}
+
+<div class="contenedor-principal">
+    <aside class="menu-lateral">
+        <ul>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmEmpresa" class="boton-menu">Crear Empresa</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmCaja" class="boton-menu">Crear Caja</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmBodega" class="boton-menu">Crear Bodega</a></li>
+            <li><a href="#" class="boton-menu">Crear Cliente</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmProductos" class="boton-menu">Crear Producto</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmSuplidores" class="boton-menu">Crear Suplidor</a></li>
+        </ul>
+    </aside>
+
+    <section class="contenido-central">
+        <div class="central-wrapper">
+            <h2>Registro de Suplidores y Representantes</h2>
+
+            <!-- Formulario -->
+            <form id="frmSuplidor" asp-action="FrmSuplidores" asp-controller="Mantenimiento" method="post" class="Formulario_productos bordered">
+                <div class="form-group">
+                    <span>Cód. Suplidor:</span>
+                    <input type="number" 
+                           name="CodSuplidor" 
+                           value="@(ViewBag.ProximoID ?? Model.CodSuplidor)" 
+                           @(ViewBag.ProximoID != null ? "readonly" : "") />
+                </div>
+
+                <div class="form-group">
+                    <span>Nombre Contacto:</span>
+                    <input asp-for="NombreSuplidor" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <span>Suplidor:</span>
+                    <input asp-for="Suplidor" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <span>Apellido Contacto:</span>
+                    <input asp-for="ApellidoSuplidor" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <span>RNC Suplidor:</span>
+                    <input asp-for="RncSuplidor" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <span>Cédula:</span>
+                    <input asp-for="CedulaContacto" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <span>Tel. Suplidor:</span>
+                    <input asp-for="TelSuplidor" type="number" />
+                </div>
+
+                <div class="form-group">
+                    <span>Celular Contacto:</span>
+                    <input asp-for="CelularContacto" type="number" />
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <span>Dir. Suplidor:</span>
+                    <input asp-for="DirreccionSuplidor" type="text" style="width:100%;" />
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <span>Email Contacto:</span>
+                    <input asp-for="EmailSuplidor" type="email" style="width:100%;" />
+                </div>
+            </form>
+
+            <!-- Tabla de Suplidores -->
+            <div style="width:100%; height:200px; background-color:#d3d3d3; overflow:auto; margin-top:20px;">
+                <table style="width:100%; border-collapse:collapse;" border="1">
+                    <thead style="background:#b0b0b0; text-align:center;">
+                        <tr>
+                            <th style="padding:5px;">Código</th>
+                            <th style="padding:5px;">Suplidor</th>
+                            <th style="padding:5px;">RNC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ListaSuplidores != null && ViewBag.ListaSuplidores.Count > 0)
+                        {
+                            foreach (var s in ViewBag.ListaSuplidores)
+                            {
+                                <tr>
+                                    <td style="padding:5px; text-align:center;">@s.CodSuplidor</td>
+                                    <td style="padding:5px;">@s.Suplidor</td>
+                                    <td style="padding:5px;">@s.RncSuplidor</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" style="text-align:center; padding:10px;">No hay datos</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mensaje -->
+            <div style="margin-top:15px; background-color:#cce5ff; border:1px solid #99ccff; padding:10px; margin:auto;">
+                <b>Mensaje:</b> @ViewBag.Mensaje
+            </div>
+        </div>
+    </section>
+
+    <!-- Menú de acciones -->
+    <aside class="menu-accion">
+        <ul>
+            <li>
+                <button type="submit" form="frmSuplidor" name="accion" value="Aceptar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Aceptar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmSuplidor" name="accion" value="Nuevo" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Nuevo.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmSuplidor" name="accion" value="Cancelar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Cancelar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmSuplidor" name="accion" value="Buscar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Buscar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmSuplidor" name="accion" value="Modificar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Modificar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmSuplidor" name="accion" value="Imprimir" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Printer.png")" />
+                </button>
+            </li>
+        </ul>
+    </aside>
+</div>

@@ -13,6 +13,172 @@ body {
     display: flex;
     flex-direction: column;
 }
+/* Contenedor principal del formulario */
+.Formulario_productos {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas principales */
+  gap: 10px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Títulos de sección */
+.form-title {
+  grid-column: span 1;
+  text-align: center;
+  color: blueviolet;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Bloques de 3 columnas: Precios/Bodega/Categoría */
+.form-group-3 {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* Todos los form-group generales */
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group span {
+  font-weight: bold;
+  min-width: 130px;
+  box-sizing: border-box;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 120px;
+  box-sizing: border-box;
+}
+
+/* Bordes de bloques específicos */
+.bordered {
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Bloque extra: configurado para 3 columnas internas (usar grid-column: 1 / -1 para ocupar todo el ancho) */
+.form-group-3-extra {
+  grid-column: 1 / -1; /* ocupa todo el ancho del padre */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 columnas internas iguales */
+  gap: 10px;
+  align-items: start;
+}
+
+/* form-group dentro del bloque extra: flex para alinear span + control en línea */
+.form-group-3-extra .form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Elementos que deben abarcar 2 columnas internas */
+.form-group-3-extra .full-width,
+.form-group-3-extra .two-columns {
+  grid-column: span 2; /* ocupan dos columnas del grid interno (izq + centro) */
+}
+
+/* Estilo específico para la fila de checkboxes: alineados start/end */
+.form-group-3-extra .full-width {
+  display: flex;
+  justify-content: space-between; /* uno al inicio, otro al final */
+  align-items: center;
+}
+
+/* Nota (3ra columna): vertical */
+.form-group-3-extra .note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+}
+
+/* Checkbox-group y venta-compra */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group span {
+  font-weight: bold;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  transform: scale(1.05);
+}
+
+.venta-compra {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  
+}
+.posicion{
+    position: relative;
+    top: -55px;
+}
+.venta-compra select,
+.venta-compra input[type="number"] {
+  min-width: 100px;
+}
+
+/* Ajustes para que los inputs no quiebren el layout si hay muchos campos */
+.two-columns span {
+  min-width: 110px;
+}
+
+.two-columns input,
+.two-columns select {
+  min-width: 120px;
+}
+
+/* Responsive: en pantallas pequeñas apilar todo */
+@media (max-width: 900px) {
+  .Formulario_productos {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group-3,
+  .form-group-3-extra {
+    grid-template-columns: 1fr;
+  }
+
+  /* los que abarcaban 2 columnas vuelven a ocupar 1 en móvil */
+  .form-group-3-extra .full-width,
+  .form-group-3-extra .two-columns {
+    grid-column: auto;
+  }
+
+  .form-group-3-extra .full-width {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+
 
 /* Menú superior */
 .menu-superior {

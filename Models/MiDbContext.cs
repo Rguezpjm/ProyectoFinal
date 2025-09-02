@@ -27,6 +27,8 @@ public partial class MiDbContext : DbContext
 
     public virtual DbSet<Provincium> Provincia { get; set; }
 
+    public virtual DbSet<Suplidore> Suplidores { get; set; }
+
     public virtual DbSet<Tiposcliente> Tiposclientes { get; set; }
 
     public virtual DbSet<UserLogin> UserLogins { get; set; }
@@ -193,6 +195,45 @@ public partial class MiDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("PRO_NOMBRE");
+        });
+
+        modelBuilder.Entity<Suplidore>(entity =>
+        {
+            entity.HasKey(e => e.CodSuplidor).HasName("PK__SUPLIDOR__721A7F3A1C8C75C5");
+
+            entity.ToTable("SUPLIDORES");
+
+            entity.Property(e => e.CodSuplidor).HasColumnName("COD_SUPLIDOR");
+            entity.Property(e => e.ApellidoSuplidor)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("APELLIDO_SUPLIDOR");
+            entity.Property(e => e.CedulaContacto)
+                .HasMaxLength(140)
+                .IsUnicode(false)
+                .HasColumnName("CEDULA_CONTACTO");
+            entity.Property(e => e.CelularContacto).HasColumnName("CELULAR_CONTACTO");
+            entity.Property(e => e.DirreccionSuplidor)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("DIRRECCION_SUPLIDOR");
+            entity.Property(e => e.EmailSuplidor)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL_SUPLIDOR");
+            entity.Property(e => e.NombreSuplidor)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("NOMBRE_SUPLIDOR");
+            entity.Property(e => e.RncSuplidor)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("RNC_SUPLIDOR");
+            entity.Property(e => e.Suplidor)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("SUPLIDOR");
+            entity.Property(e => e.TelSuplidor).HasColumnName("TEL_SUPLIDOR");
         });
 
         modelBuilder.Entity<Tiposcliente>(entity =>

@@ -1,3 +1,17 @@
+@inject ProyectoFinal.Models.MiDbContext _context
+
+@{
+    string empLogo;
+    var empresa = _context.Empresas.FirstOrDefault();
+    if (empresa != null && empresa.EmpLogo != null)
+    {
+        empLogo = "data:image/png;base64," + Convert.ToBase64String(empresa.EmpLogo);
+    }
+    else
+    {
+        empLogo = Url.Content("~/images/logo.png");
+    }
+}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,9 +37,10 @@
     </header>
 
     <div class="titulo">
-        <img src="~/images/logo.png" alt="Logo_Empresa" class="logo"/>
-        Sistema de Facturación Electronica
+    <img src="@empLogo" alt="Logo_Empresa" class="logo"/>
+    Sistema de Facturación Electrónica
     </div>
+
 
     @RenderBody()
     

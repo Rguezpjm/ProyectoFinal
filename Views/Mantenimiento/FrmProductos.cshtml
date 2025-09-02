@@ -1,0 +1,58 @@
+@model ProyectoFinal.Models.Caja
+@{
+    Layout = "~/Views/Shared/_header.cshtml";
+    ViewData["Title"] = "Crear Productos";
+}
+
+<div class="contenedor-principal">
+    <aside class="menu-lateral">
+        <ul>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmEmpresa" class="boton-menu">Crear Empresa</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmCaja" class="boton-menu">Crear Caja</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmBodega" class="boton-menu">Crear Bodega</a></li>
+            <li><a href="#" class="boton-menu">Crear Cliente</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmProductos" class="boton-menu">Crear Producto</a></li>
+            <li><a asp-controller="Mantenimiento" asp-action="FrmSuplidores" class="boton-menu">Crear Suplidor</a></li>
+        </ul>
+    </aside>
+
+    <section class="contenido-central">
+    
+
+    </section>
+
+            <aside class="menu-accion">
+        <ul>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Aceptar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Aceptar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Nuevo" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Nuevo.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Cancelar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Cancelar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Buscar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Buscar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Modificar" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Modificar.png")" />
+                </button>
+            </li>
+            <li>
+                <button type="submit" form="frmCaja" name="accion" value="Imprimir" style="background:none; border:none;">
+                    <img src="@Url.Content("~/images/Printer.png")" />
+                </button>
+            </li>
+        </ul>
+    </aside>
+</div>
